@@ -7,7 +7,7 @@ const lavalink = require("../main.js")
 const client = lavalink.client
 let config = require("../main.js")
 let socket = config.configs
-client.once("ready", async bot =>{
+client.once("ready", async () =>{
 const nodes = [
     {
       tag: 'easycode-lavalink', 
@@ -17,11 +17,14 @@ const nodes = [
     },        
   ]  
   if(client){
+  const io = require("../main").io
+  const pyth = require("../configs/x.js").cs
+  io.emit("lavalink",{lava:client.user,pyth:pyth}) 
   client.music = new GorilinkManager(client, nodes)
   .on('nodeConnect', node => {
     if(!socket.msg_lavalink) return;
     console.log(`${node.tag || node.host} - Lavalink Conectado.`)
-  })
+  })  
   client.music.on("trackStart",async music => {
     await yts(music.player.track.info.uri,async function (err,r) {
     if(err) console.log("Ocorreu um Erro! Tente Novamente")

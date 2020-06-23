@@ -16,12 +16,3 @@ class Painel {
 module.exports = {
     Painel
 }
-
-let fs = require('fs');
-
-fs.writeFile("./easycode/src/painel/teste.js",'', function(err){
-  if(err){
-		return console.log('erro')
-	}
-	console.log('Arquivo Criado');
-});
