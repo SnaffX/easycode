@@ -14,7 +14,13 @@ const nodes = [
       host: 'easycode-lavalink.herokuapp.com',
       port: 80,
       password: 'youshallnotpass'
-    },        
+    },            
+    {
+      tag: 'easycode-lavalink - 2', 
+      host: 'easycode-lavalink-2.herokuapp.com',
+      port: 80,
+      password: 'youshallnotpass'
+    }      
   ]  
   if(client){
   const io = require("../main").io
@@ -22,8 +28,8 @@ const nodes = [
   io.emit("lavalink",{lava:client.user,pyth:pyth}) 
   client.music = new GorilinkManager(client, nodes)
   .on('nodeConnect', node => {
-    if(!socket.msg_lavalink) return;
-    console.log(`${node.tag || node.host} - Lavalink Conectado.`)
+    if(socket.msg_lavalink == true) return;
+   // console.log(`${node.tag || node.host} - Lavalink Conectado.`)
   })  
   client.music.on("trackStart",async music => {
     await yts(music.player.track.info.uri,async function (err,r) {
