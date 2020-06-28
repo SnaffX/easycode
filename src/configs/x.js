@@ -1,4 +1,4 @@
-let cs,token,reconnect
+let cs,token,reconnect,musica = 0
 
 let configs = [{
     msg_lavalink: false,
@@ -10,5 +10,6 @@ module.exports = {
     cs,
     token,
     reconnect,
-    configs
+    configs,
+    musica
 };

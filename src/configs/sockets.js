@@ -28,9 +28,22 @@ configs[0].msg_pause = dados.input2
 console.log(configs)
 })
 
+io.on("musicas",dados =>{
+  const client = require("../main").bot
+  const lavalink = require("../handles/lava.js");
+  const array = []
+  if(client.guilds.cache.get(dados.id)){
+    const player = lavalink.music.players.get(dados.id);
+    if (!player || !player.queue[0]) {
+    }else{
+      io.emit("sounds",{m:player.queue,x:dados.k})
+    }
+  }
+})
+
 io.on("servs",x =>{
 const client = require("../main").lavalink
-io.emit("servers",array)
+//io.emit("servers",array)
 })
 
 io.on("teste",x =>{
@@ -57,44 +70,3 @@ module.exports = {
     configs,
     cs
 };
-/*
-let arquivos = []
-const fs = require("fs")
-fs.readdir("./", async (err, files) => {
-    if (err) console.error(err); 
-    files.forEach((f, i) => {
-        if(f == "node_modules" || f == ".git") return ;
-        fs.readdir(`./${f}`, async (erro, file) => {   
-            if(!file) return;
-            for(let b = 0; b < file.length;b++){
-                console.log(f,file[b])
-              //  let pasta = file.filter(x => !x.endsWith('.js'))
-                //console.log(pasta)
-            }
-            /*
-            let pasta = files.filter(file => 
-            !file.endsWith('.js') || !file.endsWith('.json') || 
-            !file.endsWith('.py') || !file.endsWith('.env') 
-            || !file.endsWith('.css')  || !file.endsWith('.html') || !file.endsWith('.rar'))
-            pasta.forEach((y, i) => {
-                console.log("PASTA",y)
-            })
-            
-        })  
-    })
-  })
-
-      //let arquivojs = files.filter(file => !file.endsWith('.js'))
-    //console.log(arquivojs)
-  arquivojs.forEach((f, i) => {
-    if(f === "data" || f === "function" || f === "music") return ;
-      fs.readdir(`./comandos/${f}`, async (erro, file) => {     
-        for(let b = 0; b < file.length;b++){
-        let props = require(`./comandos/${f}/${file[b]}`);
-        if(!props.help) return console.log(`\x1b[31m[ERRO] Está faltando exports.help{  } no Comando ${file[b]}`)
-        console.log(`COMANDO ${file[b]} CARREGADO!`)
-        if(!props.help.name) return console.log(`\x1b[31m[ERRO]  Está faltando o Nome do Comando! no comando ${file[b]} ] \x1b[0m`)
-        client.commands.set(props.help.name,props);
-      }
-    })
-  */

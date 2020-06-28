@@ -6,17 +6,9 @@ let music = require('./structures/music.js')
 let musicx = require('./handles/music.js')
 let sockets = require("./configs/sockets.js")
 let painel = require("./painel/painel")
+let events = require("./handles/events")
 
-let Lavalink = {
-play: music.play,
-pausar: music.pausar,
-continuar: music.continuar,
-pular: music.pular,
-getTracks: music.getTracks,
-volume: music.volume,
-fim: music.fim,
-}
-
+let dispatcher = require("./structures/dispatcher")
 
 module.exports = {
 configs: sockets.configs,
@@ -36,9 +28,11 @@ pular: music.pular,
 getTracks: music.getTracks,
 volume: music.volume,
 fim: music.fim,
-repeticao: music.repeticao,
-fila: music.fila,
+
+Musica: oauth2.Musica,
 
 Painel: painel.Painel,
 Eventos: sockets.io,
+
+bot: events
 }

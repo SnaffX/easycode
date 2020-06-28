@@ -27,7 +27,14 @@ class oauth2 {
         console.log("testado")
     } 
 }
+
+function Musica(params){
+    const mus = require("../configs/x")
+    mus.musica = params; 
+    console.log(`[ API ] Sistema Escolhido: ${mus.musica == 1 ? "Lavalink": "Dispatcher"}`)
+}
 module.exports = {
     oauth2,
-    discord
+    discord,
+    Musica
 }

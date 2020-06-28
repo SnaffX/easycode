@@ -18,6 +18,11 @@
     "lowdb": "^1.0.0",
     "socket.io-client": "^2.3.0",
     "sqlite3": "^4.2.0",
-    "yt-search": "^1.1.2"
+    "yt-search": "^1.1.2",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-extract-frames-quality": "^2.0.2",
+    "ffmpeg-probe": "^1.0.6",
+    "ffmpeg-static": "^4.2.2",
+    "fluent-ffmpeg": "^2.1.2"
   }
 }

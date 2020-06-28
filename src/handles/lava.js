@@ -1,6 +1,5 @@
 const { GorilinkManager } = require('gorilink')
 const Discord = require('discord.js')
-const EventEmitter = require('events');
 
 const yts = require( 'yt-search' )
 const lavalink = require("../main.js")
@@ -14,13 +13,7 @@ const nodes = [
       host: 'easycode-lavalink.herokuapp.com',
       port: 80,
       password: 'youshallnotpass'
-    },            
-    {
-      tag: 'easycode-lavalink - 2', 
-      host: 'easycode-lavalink-2.herokuapp.com',
-      port: 80,
-      password: 'youshallnotpass'
-    }      
+    }    
   ]  
   if(client){
   const io = require("../main").io

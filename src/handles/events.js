@@ -4,7 +4,17 @@ const client = login.discord
 //let commands = cmd.commands
 
 client.on("ready",() => {
-    console.log(`[ API INFO ] Aplicação Logada via Token. Versão: 1.0`)
+      console.log(`[ API INFO ] Aplicação Logada via Token. Versão: 1.2 BETA`)
+      let dispatcher = require("../structures/dispatcher")
+      let servers = dispatcher.servers  
+
+      client.guilds.cache.map(x =>{
+        if (!servers[x.id]) servers[x.id] = {
+            queue: [],
+            atual:"",
+            tocando: 0
+        }
+    })
 })
 
 client.on("message",async message => {
@@ -40,3 +50,6 @@ client.on("message",async message => {
     }
     }
 })
+
+
+module.exports = client;
